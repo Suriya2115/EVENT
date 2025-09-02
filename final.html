@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SKCT IEEE | IEEE Day 2025</title>
-  <meta name="description" content="SKCT EEE × IEEE SB — IEEE Day 2025 Events: Tech Forge, Guest Lecture, and Model United Nations (MUN)." />
+  <title>IEEE Day 2025 | SKCT</title>
+  <meta name="description" content="SKCT EEE × IEEE SB — IEEE Day 2025 Celebration: Tech Forge and Global Energy Forum Simulation Exchange" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,14 +25,20 @@
               700: '#4338ca',
               800: '#3730a3',
               900: '#312e81'
+            },
+            ieee: {
+              blue: '#00629B',
+              yellow: '#FFD100',
+              orange: '#FF8300'
             }
           },
           boxShadow: {
-            glow: '0 0 20px rgba(99,102,241,0.35)',
-            'glow-lg': '0 0 40px rgba(99,102,241,0.5)'
+            glow: '0 0 20px rgba(0,98,155,0.35)',
+            'glow-lg': '0 0 40px rgba(0,98,155,0.5)'
           },
           animation: {
-            float: 'float 6s ease-in-out infinite'
+            float: 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           },
           keyframes: {
             float: {
@@ -64,10 +70,13 @@
       color: #f1f5f9;
     }
     .grad-text {
-      background: linear-gradient(90deg, #6366f1, #a855f7);
+      background: linear-gradient(90deg, #00629B, #FF8300);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+    }
+    .ieee-gradient {
+      background: linear-gradient(135deg, #00629B 0%, #FF8300 50%, #FFD100 100%);
     }
     .glass {
       background: rgba(255,255,255,0.08);
@@ -109,6 +118,39 @@
       z-index: -1;
       pointer-events: none;
     }
+    
+    /* Countdown */
+    .countdown-box {
+      @apply bg-white/10 dark:bg-slate-800/50 backdrop-blur rounded-lg p-3 flex flex-col items-center justify-center min-w-[60px];
+    }
+    .countdown-number {
+      @apply text-2xl font-bold text-ieee-blue dark:text-ieee-orange;
+    }
+    .countdown-label {
+      @apply text-xs text-slate-600 dark:text-slate-300 uppercase mt-1;
+    }
+    
+    /* Animated underline */
+    .underline-animate {
+      position: relative;
+      display: inline-block;
+    }
+    .underline-animate::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #00629B, #FF8300);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+    .underline-animate:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors">
@@ -133,48 +175,75 @@
         </a>
         
         <nav class="hidden md:flex items-center space-x-6 text-slate-700 dark:text-white/90">
-          <a href="#techforge" class="hover:text-brand-500 dark:hover:text-brand-300">Tech Forge</a>
+          <a href="#techforge" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Tech Forge</a>
           <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#guest" class="hover:text-brand-500 dark:hover:text-brand-300">Guest Lecture</a>
+          <a href="#gef" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">GEF Simulation</a>
           <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#mun" class="hover:text-brand-500 dark:hover:text-brand-300">MUN</a>
+          <a href="#countdown" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Countdown</a>
           <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#faqs" class="hover:text-brand-500 dark:hover:text-brand-300">FAQs</a>
+          <a href="#faqs" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">FAQs</a>
         </nav>
 
         <button id="menu-btn" class="md:hidden text-slate-700 dark:text-white text-2xl">
           <i class='bx bx-menu'></i>
         </button>
 
-        <a href="#register" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 font-semibold text-white shadow-glow">
+        <a href="#register" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
           Register
         </a>
       </div>
       
       <nav id="mobile-nav" class="md:hidden flex flex-col gap-2 py-2">
         <a href="#techforge" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Tech Forge</a>
-        <a href="#guest" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Guest Lecture</a>
-        <a href="#mun" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">MUN</a>
+        <a href="#gef" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">GEF Simulation</a>
+        <a href="#countdown" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Countdown</a>
         <a href="#faqs" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">FAQs</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="py-12 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="home" class="py-12 sm:py-20 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-ieee-blue/5 to-transparent dark:from-ieee-blue/10 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid md:grid-cols-2 gap-8 items-center">
         <div class="space-y-6">
-          <p class="uppercase tracking-widest text-xs sm:text-sm text-slate-500 dark:text-white/60">Department of EEE • IEEE Student Branch</p>
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-ieee-blue/10 text-ieee-blue dark:bg-ieee-orange/10 dark:text-ieee-orange text-sm font-medium">
+            <i class='bx bx-calendar-event mr-2'></i> September 13, 2025
+          </div>
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
             Celebrate <span class="grad-text">IEEE Day 2025</span> at SKCT
           </h1>
           <p class="text-slate-600 dark:text-white/80 text-base sm:text-lg">
-            Join us for three flagship events — Tech Forge (Project Presentation), a Guest Lecture on Social Impact & SDGs, and Model United Nations.
+            Join us for exciting events — Tech Forge (Project Presentation) and Global Energy Forum-Simulation Exchange, aligned with Sustainable Development Goals.
           </p>
-          <div class="flex flex-wrap gap-3">
-            <a href="#techforge" class="px-5 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold hover:opacity-90">
+          
+          <!-- Countdown -->
+          <div id="countdown" class="flex gap-4 mt-6">
+            <div class="countdown-box">
+              <span id="days" class="countdown-number">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+              <span id="hours" class="countdown-number">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-box">
+              <span id="minutes" class="countdown-number">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-box">
+              <span id="seconds" class="countdown-number">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="#events" class="px-5 py-3 rounded-xl bg-ieee-blue hover:bg-ieee-orange text-white font-semibold transition-colors shadow-glow">
               Explore Events
+            </a>
+            <a href="#register" class="px-5 py-3 rounded-xl bg-white dark:bg-slate-800 border border-ieee-blue text-ieee-blue dark:text-ieee-orange font-semibold hover:bg-ieee-blue/10 transition-colors">
+              Register Now
             </a>
           </div>
         </div>
@@ -192,19 +261,19 @@
                 <img src="PIC3.jpg" alt="Event 3" class="w-full h-full object-cover" />
               </div>
               <div class="swiper-slide">
-                <img src="PIC4.jpg" alt="Event 3" class="w-full h-full object-cover" />
+                <img src="PIC4.jpg" alt="Event 4" class="w-full h-full object-cover" />
               </div>
               <div class="swiper-slide">
-                <img src="PIC5.jpg" alt="Event 3" class="w-full h-full object-cover" />
+                <img src="PIC5.jpg" alt="Event 5" class="w-full h-full object-cover" />
               </div>
               <div class="swiper-slide">
-                <img src="PIC6.jpg" alt="Event 3" class="w-full h-full object-cover" />
+                <img src="PIC6.jpg" alt="Event 6" class="w-full h-full object-cover" />
               </div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
           <p class="mt-3 text-xs text-slate-500 dark:text-white/60 text-center">
-            Previous Year <span class="font-mono text-brand-500 dark:text-brand-300">IEEE-Day</span> Celebration 2024
+            Previous Year <span class="font-mono text-ieee-blue dark:text-ieee-orange">IEEE-Day</span> Celebration 2024
           </p>
         </div>
       </div>
@@ -212,106 +281,181 @@
   </section>
 
   <!-- Events -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+  <main id="events" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
     <!-- Tech Forge -->
     <section id="techforge" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
+      <h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange">Main Event</h3>
       <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="rounded-xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 shadow-glow aspect-[3/4]">
+
+        <div class="rounded-xl overflow-hidden bg-gradient-to-br from-ieee-blue to-ieee-orange shadow-glow-lg aspect-[3/4]">
           <img alt="Tech Forge" class="w-full h-full object-cover" src="1.jpg" onerror="this.style.opacity='0'" />
         </div>
         <div>
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-ieee-blue/10 text-ieee-blue dark:bg-ieee-orange/10 dark:text-ieee-orange text-sm font-medium mb-4">
+            <i class='bx bx-trophy mr-2'></i> Project Competition
+          </div>
           <h2 class="text-3xl font-extrabold">Tech Forge — Project Presentation</h2>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Incubation Centre, SKCT • 13th Sept '25 • 9:30 AM – 3:30 PM • Team of 2–4</p>
+          <p class="mt-2 text-slate-600 dark:text-white/80 flex items-center">
+            <i class='bx bx-map mr-2'></i> Incubation Centre, SKCT
+          </p>
+          <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
+            <i class='bx bx-calendar mr-2'></i> 13th Sept '25 • 9:30 AM – 3:30 PM
+          </p>
+          <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
+            <i class='bx bx-group mr-2'></i> Team of 2–4 members
+          </p>
+          
+          <div class="mt-6 p-4 bg-ieee-blue/5 dark:bg-ieee-blue/10 rounded-lg">
+            <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Participation Fees:</h3>
+            <ul class="mt-2 space-y-1 text-slate-600 dark:text-white/80">
+              <li>• Free for Internal Participants</li>
+              <li>• External IEEE members – ₹100/- per participant</li>
+              <li>• External Non-IEEE members – ₹150/- per participant</li>
+            </ul>
+          </div>
+          
           <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
-            <li>Open to all domains; bring your prototype, poster, or slides.</li>
-            <li>Judging: innovation, impact, feasibility, and clarity.</li>
-            <li>Certificates for all; prizes for top teams.</li>
+            <li>Open to all domains; bring your prototype, poster, or slides</li>
+            <li>Judging: innovation, impact, feasibility, and clarity</li>
+            <li>Gift vouchers for best participants</li>
+            <li>Certificates for all participants</li>
           </ul>
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a href="https://forms.gle/SrBNWTT1LNPMUnX5A" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 font-semibold text-white shadow-glow">
-              Register (Internal)
-            </a>
-            <a href="https://forms.gle/qtqWW8CBLbhbz8Sw8" class="px-4 py-2 rounded-xl bg-fuchsia-500 hover:bg-fuchsia-400 font-semibold text-white shadow-glow">
-              Register (External)
-            </a>
+          
+          <div class="mt-6">
+            <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Registration Links:</h3>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <a href="https://forms.gle/SrBNWTT1LNPMUnX5A" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors flex items-center">
+                <i class='bx bx-user-pin mr-2'></i> Internal Participants
+              </a>
+              <a href="https://forms.gle/qtqWW8CBLbhbz8Sw8" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors flex items-center">
+                <i class='bx bx-group mr-2'></i> External Participants
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Guest Lecture -->
-<!--     <section id="guest" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="rounded-xl overflow-hidden bg-gradient-to-br from-amber-500 to-pink-600 shadow-glow aspect-[3/4] order-2 md:order-1">
-          <img alt="Guest Lecture" class="w-full h-full object-cover" src="3.jpg" onerror="this.style.opacity='0'" />
+    <!-- Global Energy Forum -->
+    <!-- Global Energy Forum -->
+<section id="gef" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
+  <div class="mb-4">
+    <h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange">Sub Event</h3>
+  </div>
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="rounded-xl overflow-hidden bg-gradient-to-br from-ieee-orange to-ieee-blue shadow-glow-lg aspect-[3/4] order-2 md:order-1">
+      <img alt="Global Energy Forum" class="w-full h-full object-cover" src="2.png" onerror="this.style.opacity='0'" />
+    </div>
+    <div class="order-1 md:order-2">
+      <div class="inline-flex items-center px-3 py-1 rounded-full bg-ieee-blue/10 text-ieee-blue dark:bg-ieee-orange/10 dark:text-ieee-orange text-sm font-medium mb-4">
+        <i class='bx bx-world mr-2'></i> Sub Event-Simulation Exchange
+      </div>
+      <h2 class="text-3xl font-extrabold">Global Energy Forum — Simulation Exchange</h2>
+      <p class="mt-2 text-slate-600 dark:text-white/80 flex items-center">
+        <i class='bx bx-map mr-2'></i> Zoho Lab, SKCT
+      </p>
+      <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
+        <i class='bx bx-calendar mr-2'></i> 13th Sept '25 • 12:30 PM – 3:45 PM
+      </p>
+      <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
+        <i class='bx bx-user mr-2'></i> Individual Participation
+      </p>
+      
+      <div class="mt-6 p-4 bg-ieee-blue/5 dark:bg-ieee-blue/10 rounded-lg">
+        <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Free Registration:</h3>
+        <p class="mt-1 text-slate-600 dark:text-white/80">For both Internal & External Participants</p>
+      </div>
+      
+      <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
+        <li>Debate global energy issues with diplomacy and research</li>
+        <li>Learn UN procedures; sharpen policy-making skills</li>
+        <li>Focus on Sustainable Development Goals (SDGs)</li>
+        <li>Certificates for all participants</li>
+      </ul>
+      
+      <div class="mt-6">
+        <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Registration Links:</h3>
+        <div class="mt-3 flex flex-wrap gap-3">
+          <a href="https://forms.gle/qShwXEDtdzPKmpDC9" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors flex items-center">
+            <i class='bx bx-user-pin mr-2'></i> Internal Participants
+          </a>
+          <a href="https://forms.gle/LeFsncmMPLNJRvoY6" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors flex items-center">
+            <i class='bx bx-group mr-2'></i> External Participants
+          </a>
         </div>
-        <div class="order-1 md:order-2">
-          <h2 class="text-3xl font-extrabold">Guest Lecture — Social Impact & SDG Alignment</h2>
-          <p class="mt-2 text-slate-600 dark:text-white/80">ES Seminar Hall, SKCT • 19th Sept '25 • 1:00 PM – 2:30 PM</p>
-          <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
-            <li>Speaker: Dr. Ramalatha Marimuthu, Managing Director, iExplore.</li>
-            <li>Focus: Leveraging IEEE projects and events for societal impact.</li>
-            <li>Free registration; open to students.</li>
-          </ul>
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a href="https://docs.google.com/forms/d/182dSieRCAcYpHSlCdWrEFPmOuf3ADp3TpjHGrxc7WxU/edit" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 font-semibold text-white shadow-glow">
-              Register Here
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Register Section -->
+    <section id="register" class="glass rounded-xl p-6 lg:p-8 shadow-glow text-center">
+      <h2 class="text-3xl font-extrabold">Ready to Participate?</h2>
+      <p class="mt-2 text-slate-600 dark:text-white/80">Choose your event and register now!</p>
+      
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="bg-white/10 dark:bg-slate-800/50 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-ieee-blue dark:text-ieee-orange">Tech Forge</h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">Project Presentation Competition</p>
+          <div class="mt-4 flex flex-col gap-3">
+            <a href="https://forms.gle/SrBNWTT1LNPMUnX5A" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
+              Internal Registration
+            </a>
+            <a href="https://forms.gle/qtqWW8CBLbhbz8Sw8" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors">
+              External Registration
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 dark:bg-slate-800/50 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-ieee-blue dark:text-ieee-orange">GEF Simulation</h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">Global Energy Forum Exchange</p>
+          <div class="mt-4 flex flex-col gap-3">
+            <a href="https://forms.gle/qShwXEDtdzPKmpDC9" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
+              Internal Registration
+            </a>
+            <a href="https://forms.gle/LeFsncmMPLNJRvoY6" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors">
+              External Registration
             </a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- MUN -->
-    <section id="mun" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="rounded-xl overflow-hidden bg-gradient-to-br from-green-500 to-cyan-600 shadow-glow aspect-[3/4]">
-          <img alt="MUN" class="w-full h-full object-cover" src="2.jpg" onerror="this.style.opacity='0'" />
-        </div>
-        <div>
-          <h2 class="text-3xl font-extrabold">SUB EVENT</h2>
-          <h2 class="text-3xl font-extrabold">GLOBAL ENERGY FORUM-SIMULATION EXCHANGE</h2>
-          <p class="mt-2 text-slate-600 dark:text-white/80">ES Seminar Hall, SKCT • 19th Sept '25 • 12:30 AM – 3:45 PM • Individual</p>
-          <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
-            <li>Debate global issues with diplomacy and research.</li>
-            <li>Learn UN procedures; sharpen policy-making skills.</li>
-            <li>Certificates for all participants.</li>
-          </ul>
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a href="https://forms.gle/qShwXEDtdzPKmpDC9" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 font-semibold text-white shadow-glow">
-              Register (Internal)
-            </a>
-            <a href="https://forms.gle/LeFsncmMPLNJRvoY6" class="px-4 py-2 rounded-xl bg-fuchsia-500 hover:bg-fuchsia-400 font-semibold text-white shadow-glow">
-              Register (External)
-            </a>
-          </div>
-        </div>
-      </div> 
-  </section>
 
     <!-- FAQs -->
     <section id="faqs" class="glass rounded-xl p-6 lg:p-8 shadow-glow">
-      <h2 class="text-3xl font-extrabold">FAQs</h2>
-      <div class="mt-5 grid md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="font-bold">Are there separate forms for Internal and External?</h3>
-          <p class="text-slate-600 dark:text-white/80">Yes. Use the green/pink buttons for respective registration forms.</p>
+      <h2 class="text-3xl font-extrabold">Frequently Asked Questions</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+            <i class='bx bx-question-mark mr-2'></i> Are there separate forms for Internal and External?
+          </h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">Yes. Use the appropriate registration buttons for internal or external participants for each event.</p>
         </div>
-        <div>
-          <h3 class="font-bold">What is the dress code?</h3>
-          <p class="text-slate-600 dark:text-white/80">Smart casuals or formal college attire.</p>
+        
+        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+            <i class='bx bx-question-mark mr-2'></i> What is the dress code?
+          </h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">Smart casuals or formal college attire is recommended for all events.</p>
         </div>
-        <div>
-          <h3 class="font-bold">Do I need an IEEE membership?</h3>
-          <p class="text-slate-600 dark:text-white/80">Open to all. External IEEE members may have reduced fees.</p>
+        
+        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+            <i class='bx bx-question-mark mr-2'></i> Do I need an IEEE membership?
+          </h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">Events are open to all students. External IEEE members get discounted registration fees for Tech Forge.</p>
         </div>
-        <div>
-          <h3 class="font-bold">Who to contact?</h3>
-          <p class="text-slate-600 dark:text-white/80">
-            • Dr. Jency Joseph IEEE-SB COORDINATOR: +91 9486544364<br>
-            • Dr. Naveenbalaji IEEE DAY AMBASSADOR: +91 9443874511<br>
-            • Hariprasad SJ IEEE-SB CHAIRMAN: +91 9688572629<br>
-            • Suriya Prakash B IEEE-SB VICECHAIRMAN: +91 7598017882
+        
+        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+            <i class='bx bx-question-mark mr-2'></i> Who should I contact for support?
+          </h3>
+          <p class="mt-2 text-slate-600 dark:text-white/80">
+            <strong>Dr. J. Jency Joseph</strong> - IEEE SB Counselor: +91 9486544364<br>
+            <strong>Dr. Naveenbalaji Gowthaman</strong> - IEEE Day Ambassador: +91 9443874511<br>
+            <strong>Hariprasad S J</strong> - Chairman: +91 9688572629<br>
+            <strong>Suriya Prakash B</strong> - Vice Chairman: +91 7598017882
           </p>
         </div>
       </div>
@@ -320,13 +464,41 @@
 
   <!-- Footer -->
   <footer class="mt-20 border-t border-slate-200 dark:border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm text-slate-600 dark:text-white/70">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">IEEE Day 2025</h3>
+          <p class="mt-2 text-slate-600 dark:text-white/70">
+            Organized by Department of Electrical and Electronics Engineering in association with IEEE Student Branch, SKCT.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">Quick Links</h3>
+          <ul class="mt-2 space-y-2">
+            <li><a href="#techforge" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">Tech Forge</a></li>
+            <li><a href="#gef" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">GEF Simulation</a></li>
+            <li><a href="#faqs" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">FAQs</a></li>
+            <li><a href="https://skct.edu.in" target="_blank" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">SKCT Website</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">Contact Info</h3>
+          <p class="mt-2 text-slate-600 dark:text-white/70">
+            Sri Krishna College of Technology<br>
+            Kovaipudur Campus, Coimbatore – 641 042<br>
+            <a href="mailto:ieeesb@skct.edu.in" class="hover:text-ieee-blue dark:hover:text-ieee-orange">ieeesb@skct.edu.in</a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-slate-600 dark:text-white/70">
         <p>© <span id="year"></span> SKCT EEE × IEEE SB. All rights reserved.</p>
         <div class="flex items-center gap-3">
-          <a href="#home" class="hover:text-brand-500 dark:hover:text-white">Back to top</a>
+          <a href="#home" class="hover:text-ieee-blue dark:hover:text-ieee-orange">Back to top</a>
           <span aria-hidden class="text-slate-300 dark:text-white/20">•</span>
-          <a href="https://skct.edu.in" target="_blank" class="hover:text-brand-500 dark:hover:text-white">skct.edu.in</a>
+          <a href="https://skct.edu.in" target="_blank" class="hover:text-ieee-blue dark:hover:text-ieee-orange">skct.edu.in</a>
         </div>
       </div>
     </div>
@@ -370,6 +542,26 @@
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Countdown timer
+    function updateCountdown() {
+      const eventDate = new Date('September 13, 2025 00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
     // Particle Animation
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
@@ -381,19 +573,19 @@
     
     // Theme-aware particle colors and styles
     const lightThemeParticles = [
-      { color: '#6366f1', size: 6, shape: 'triangle' },  // Brand color triangle
-      { color: '#a855f7', size: 8, shape: 'chevron' },   // Purple chevron
-      { color: '#4f46e5', size: 7, shape: 'angle' },     // Darker brand angle
-      { color: '#818cf8', size: 5, shape: 'line' },      // Light brand plus
-      { color: '#c7d2fe', size: 4, shape: 'diamond' }    // Very light brand diamond
+      { color: '#00629B', size: 6, shape: 'triangle' },  // IEEE blue triangle
+      { color: '#FF8300', size: 8, shape: 'chevron' },   // IEEE orange chevron
+      { color: '#FFD100', size: 7, shape: 'angle' },     // IEEE yellow angle
+      { color: '#00629B', size: 5, shape: 'line' },      // IEEE blue plus
+      { color: '#FF8300', size: 4, shape: 'diamond' }    // IEEE orange diamond
     ];
     
     const darkThemeParticles = [
-      { color: '#818cf8', size: 6, shape: 'triangle' },  // Brighter in dark
-      { color: '#a78bfa', size: 8, shape: 'chevron' },   // Light purple
-      { color: '#6366f1', size: 7, shape: 'angle' },     // Brand color
-      { color: '#c7d2fe', size: 5, shape: 'line' },      // Very light
-      { color: '#e0e7ff', size: 4, shape: 'diamond' }    // Lightest
+      { color: '#4F9ED4', size: 6, shape: 'triangle' },  // Lighter blue
+      { color: '#FFA347', size: 8, shape: 'chevron' },   // Lighter orange
+      { color: '#FFDD47', size: 7, shape: 'angle' },     // Lighter yellow
+      { color: '#4F9ED4', size: 5, shape: 'line' },      // Lighter blue
+      { color: '#FFA347', size: 4, shape: 'diamond' }    // Lighter orange
     ];
     
     class Particle {
@@ -565,5 +757,3 @@
   </script>
 </body>
 </html>
-
-
