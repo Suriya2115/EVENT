@@ -119,17 +119,6 @@
       pointer-events: none;
     }
     
-    /* Countdown */
-    .countdown-box {
-      @apply bg-white/10 dark:bg-slate-800/50 backdrop-blur rounded-lg p-3 flex flex-col items-center justify-center min-w-[60px];
-    }
-    .countdown-number {
-      @apply text-2xl font-bold text-ieee-blue dark:text-ieee-orange;
-    }
-    .countdown-label {
-      @apply text-xs text-slate-600 dark:text-slate-300 uppercase mt-1;
-    }
-    
     /* Animated underline */
     .underline-animate {
       position: relative;
@@ -154,9 +143,8 @@
   </style>
 </head>
 <body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors">
-  <!-- Particle Canvas -->
-  <canvas id="particles"></canvas>
 
+ <canvas id="particles"></canvas>
   <!-- Theme Toggle -->
   <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-lg">
     <i class='bx bx-sun dark:bx-moon text-xl'></i>
@@ -164,43 +152,50 @@
 
   <!-- Header -->
   <header class="sticky top-0 z-30 backdrop-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#home" class="flex items-center gap-3 group">
-          <img src="IEEE.png" alt="IEEE Logo" class="h-9 w-9 rounded-lg shadow-glow object-cover" />
-          <div class="leading-tight">
-            <p class="text-sm text-slate-600 dark:text-white/70">IEEE SB</p>
-            <p class="font-semibold">IEEE Day 2025</p>
-          </div>
-        </a>
-        
-        <nav class="hidden md:flex items-center space-x-6 text-slate-700 dark:text-white/90">
-          <a href="#techforge" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Tech Forge</a>
-          <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#gef" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">GEF Simulation</a>
-          <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#countdown" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Countdown</a>
-          <span class="text-slate-300 dark:text-white/20">|</span>
-          <a href="#faqs" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">FAQs</a>
-        </nav>
-
-        <button id="menu-btn" class="md:hidden text-slate-700 dark:text-white text-2xl">
-          <i class='bx bx-menu'></i>
-        </button>
-
-        <a href="#register" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
-          Register
-        </a>
-      </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
       
-      <nav id="mobile-nav" class="md:hidden flex flex-col gap-2 py-2">
-        <a href="#techforge" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Tech Forge</a>
-        <a href="#gef" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">GEF Simulation</a>
-        <a href="#countdown" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Countdown</a>
-        <a href="#faqs" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">FAQs</a>
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="IEEE.png" alt="IEEE Logo" class="h-9 w-9 rounded-lg shadow-glow object-cover" />
+        <div class="leading-tight">
+          <p class="text-sm text-slate-600 dark:text-white/70">IEEE SB</p>
+          <p class="font-semibold">IEEE Day 2025</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-6 text-slate-700 dark:text-white/90">
+        <a href="#previous-events" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Previous Events</a>
+        <span class="text-slate-300 dark:text-white/20">|</span>
+        <a href="#main-event" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Main Event</a>
+        <span class="text-slate-300 dark:text-white/20">|</span>
+        <a href="#register" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">Register</a>
+        <span class="text-slate-300 dark:text-white/20">|</span>
+        <a href="#faqs" class="hover:text-ieee-blue dark:hover:text-ieee-orange underline-animate">FAQs</a>
       </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-slate-700 dark:text-white text-2xl">
+        <i class='bx bx-menu'></i>
+      </button>
+
+      <!-- CTA Button -->
+      <a href="#register" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
+        Register
+      </a>
     </div>
-  </header>
+
+    <!-- Mobile Nav -->
+    <nav id="mobile-nav" class="md:hidden flex flex-col gap-2 py-2">
+      <a href="#previous-events" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Previous Events</a>
+      <a href="#main-event" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Main Event</a>
+      <a href="#register" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">Register</a>
+      <a href="#faqs" class="px-4 py-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg">FAQs</a>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Hero -->
   <section id="home" class="py-12 sm:py-20 relative">
@@ -215,29 +210,8 @@
             Celebrate <span class="grad-text">IEEE Day 2025</span> at SKCT
           </h1>
           <p class="text-slate-600 dark:text-white/80 text-base sm:text-lg">
-            Join us for exciting events — Tech Forge (Project Presentation) and Global Energy Forum-Simulation Exchange, aligned with Sustainable Development Goals.
+            The IEEE Student Branch of Sri Krishna College of Technology is dedicated to fostering innovation, technical excellence, and professional growth among students through workshops, webinars, and collaborative initiatives.
           </p>
-          
-          <!-- Countdown -->
-          <div id="countdown" class="flex gap-4 mt-6">
-            <div class="countdown-box">
-              <span id="days" class="countdown-number">00</span>
-              <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-box">
-              <span id="hours" class="countdown-number">00</span>
-              <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-box">
-              <span id="minutes" class="countdown-number">00</span>
-              <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-box">
-              <span id="seconds" class="countdown-number">00</span>
-              <span class="countdown-label">Seconds</span>
-            </div>
-          </div>
-          
           <div class="flex flex-wrap gap-3 mt-6">
             <a href="#events" class="px-5 py-3 rounded-xl bg-ieee-blue hover:bg-ieee-orange text-white font-semibold transition-colors shadow-glow">
               Explore Events
@@ -250,7 +224,7 @@
 
         <div class="glass rounded-xl p-4 sm:p-6 shadow-glow">
           <div class="swiper-container">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper w-full max-w-sm mx-auto">
               <div class="swiper-slide">
                 <img src="PIC1.jpg" alt="Event 1" class="w-full h-full object-cover" />
               </div>
@@ -275,191 +249,195 @@
           <p class="mt-3 text-xs text-slate-500 dark:text-white/60 text-center">
             Previous Year <span class="font-mono text-ieee-blue dark:text-ieee-orange">IEEE-Day</span> Celebration 2024
           </p>
+          <p> </br> </p>
         </div>
       </div>
     </div>
   </section>
-
+<h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange" id = "main-event"><center>Main Event's</center></h3>
   <!-- Events -->
   <main id="events" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
-    <!-- Tech Forge -->
-    <section id="techforge" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
-      <h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange">Main Event</h3>
+    <!-- <WEBMINAR> -->
+<section id="Webminar" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
       <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
         <div class="rounded-xl overflow-hidden bg-gradient-to-br from-ieee-blue to-ieee-orange shadow-glow-lg aspect-[3/4]">
-          <img alt="Tech Forge" class="w-full h-full object-cover" src="1.jpg" onerror="this.style.opacity='0'" />
+          <img alt="Webminar" class="w-full h-full object-cover" src="4.jpg" onerror="this.style.opacity='0'" />
         </div>
         <div>
           <div class="inline-flex items-center px-3 py-1 rounded-full bg-ieee-blue/10 text-ieee-blue dark:bg-ieee-orange/10 dark:text-ieee-orange text-sm font-medium mb-4">
-            <i class='bx bx-trophy mr-2'></i> Project Competition
+            <i class='bx bx-laptop mr-2'></i> Webminar
           </div>
-          <h2 class="text-3xl font-extrabold">Tech Forge — Project Presentation</h2>
+          <h2 class="text-3xl font-extrabold"> AI/ML based weather forecasting for Renewable Energy Systems — Webminar</h2>
           <p class="mt-2 text-slate-600 dark:text-white/80 flex items-center">
-            <i class='bx bx-map mr-2'></i> Incubation Centre, SKCT
+            <i class='bx bx-map mr-2'></i> Online (G-meet)
           </p>
           <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
-            <i class='bx bx-calendar mr-2'></i> 13th Sept '25 • 9:30 AM – 3:30 PM
+            <i class='bx bx-calendar mr-2'></i> 17th Sept '25 • 7:00 PM – 8:00 PM
           </p>
-          <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
-            <i class='bx bx-group mr-2'></i> Team of 2–4 members
-          </p>
-          
-          <div class="mt-6 p-4 bg-ieee-blue/5 dark:bg-ieee-blue/10 rounded-lg">
-            <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Participation Fees:</h3>
-            <ul class="mt-2 space-y-1 text-slate-600 dark:text-white/80">
-              <li>• Free for Internal Participants</li>
-              <li>• External IEEE members – ₹100/- per participant</li>
-              <li>• External Non-IEEE members – ₹150/- per participant</li>
-            </ul>
-          </div>
-          
-          <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
-            <li>Open to all domains; bring your prototype, poster, or slides</li>
-            <li>Judging: innovation, impact, feasibility, and clarity</li>
-            <li>Gift vouchers for best participants</li>
-            <li>Certificates for all participants</li>
-          </ul>
-          
           <div class="mt-6">
             <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Registration Links:</h3>
             <div class="mt-3 flex flex-wrap gap-3">
-              <a href="https://forms.gle/SrBNWTT1LNPMUnX5A" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors flex items-center">
-                <i class='bx bx-user-pin mr-2'></i> Internal Participants
+              <a href="https://forms.gle/FKYvJPPfrbvLzr4g6" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors flex items-center">
+                <i class='bx bx-user-pin mr-2'></i> Register Here
               </a>
-              <a href="https://forms.gle/qtqWW8CBLbhbz8Sw8" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors flex items-center">
-                <i class='bx bx-group mr-2'></i> External Participants
-              </a>
-            </div>
+              </div>
           </div>
         </div>
       </div>
     </section>
+<h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange" id="previous-events">
+  <center>Previous Events</center>
+</h3>
 
-    <!-- Global Energy Forum -->
-    <!-- Global Energy Forum -->
-<section id="gef" class="glass rounded-xl p-6 sm:p-8 lg:p-10 shadow-glow">
-  <div class="mb-4">
-    <h3 class="text-xl font-semibold text-ieee-blue dark:text-ieee-orange">Sub Event</h3>
-  </div>
-  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <div class="rounded-xl overflow-hidden bg-gradient-to-br from-ieee-orange to-ieee-blue shadow-glow-lg aspect-[3/4] order-2 md:order-1">
-      <img alt="Global Energy Forum" class="w-full h-full object-cover" src="2.jpg" onerror="this.style.opacity='0'" />
-    </div>
-    <div class="order-1 md:order-2">
-      <div class="inline-flex items-center px-3 py-1 rounded-full bg-ieee-blue/10 text-ieee-blue dark:bg-ieee-orange/10 dark:text-ieee-orange text-sm font-medium mb-4">
-        <i class='bx bx-world mr-2'></i> Sub Event-Simulation Exchange
-      </div>
-      <h2 class="text-3xl font-extrabold">Global Energy Forum — Simulation Exchange</h2>
-      <p class="mt-2 text-slate-600 dark:text-white/80 flex items-center">
-        <i class='bx bx-map mr-2'></i> Zoho Lab, SKCT
-      </p>
-      <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
-        <i class='bx bx-calendar mr-2'></i> 13th Sept '25 • 1:30 PM – 3:30 PM
-      </p>
-      <p class="mt-1 text-slate-600 dark:text-white/80 flex items-center">
-        <i class='bx bx-user mr-2'></i> Individual Participation
-      </p>
-      
-      <div class="mt-6 p-4 bg-ieee-blue/5 dark:bg-ieee-blue/10 rounded-lg">
-        <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Free Registration:</h3>
-        <p class="mt-1 text-slate-600 dark:text-white/80">For both Internal & External Participants</p>
-      </div>
-      
-      <ul class="mt-4 space-y-2 text-slate-600 dark:text-white/80 list-disc list-inside">
-        <li>Debate global energy issues with diplomacy and research</li>
-        <li>Learn UN procedures; sharpen policy-making skills</li>
-        <li>Focus on Sustainable Development Goals (SDGs)</li>
-        <li>Certificates for all participants</li>
-      </ul>
-      
-      <div class="mt-6">
-        <h3 class="font-bold text-ieee-blue dark:text-ieee-orange">Registration Links:</h3>
-        <div class="mt-3 flex flex-wrap gap-3">
-          <a href="https://forms.gle/qShwXEDtdzPKmpDC9" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors flex items-center">
-            <i class='bx bx-user-pin mr-2'></i> Internal Participants
-          </a>
-          <a href="https://forms.gle/LeFsncmMPLNJRvoY6" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors flex items-center">
-            <i class='bx bx-group mr-2'></i> External Participants
-          </a>
+<!-- Outer grid container -->
+<!-- Outer grid container -->
+<div class="grid md:grid-cols-2 gap-6 mt-6 max-w-7xl mx-auto p-8 
+            bg-white dark:bg-slate-900 rounded-xl shadow-lg">
+  
+  <!-- Tech Forge Swiper -->
+  <div class="glass rounded-xl p-6 shadow-glow">
+    <h2 class="text-lg font-bold text-center mb-2 text-slate-900 dark:text-white">
+      Tech Forge
+    </h2>
+    <p class="text-center text-slate-600 dark:text-slate-300 mb-4">
+      Conducted on 11th September 2025 — A hands-on project presentation competition where students showcased innovative technical solutions in electronics and software.
+    </p>
+    <div class="swiper techSwiper w-full max-w-lg mx-auto">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="a (1).jpg" alt="Tech Forge" class="rounded-lg shadow w-full h-64 object-cover" />
         </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="a (2).jpg" alt="Tech Forge Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="a (3).jpg" alt="Tech Forge Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <img src="a (4).jpg" alt="Tech Forge Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <img src="a (5).jpg" alt="Tech Forge Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 6 -->
+        <div class="swiper-slide">
+          <img src="a (6).jpg" alt="Tech Forge Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- Global Energy Forum Swiper -->
+  <div class="glass rounded-xl p-6 shadow-glow">
+    <h2 class="text-lg font-bold text-center mb-2 text-slate-900 dark:text-white">
+      Global Energy Forum
+    </h2>
+    <p class="text-center text-slate-600 dark:text-slate-300 mb-4">
+      Conducted on 12th September 2025 — A panel discussion simulating real-world energy scenarios to promote awareness and sustainable energy solutions.
+    </p>
+    <div class="swiper gefSwiper w-full max-w-lg mx-auto">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="b (1).jpg" alt="Global Energy Forum" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="b (2).jpg" alt="GEF Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="b (3).jpg" alt="GEF Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <img src="b (4).jpg" alt="GEF Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <img src="b (5).jpg" alt="GEF Celebration" class="rounded-lg shadow w-full h-64 object-cover" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Register Section -->
+<section id="register" class="glass rounded-xl p-6 lg:p-8 shadow-glow text-center">
+  <h2 class="text-3xl font-extrabold">Ready to Participate?</h2>
+  
+  <div class="mt-8 flex justify-center">
+    <div class="bg-white/10 dark:bg-slate-800/50 p-6 rounded-xl flex flex-col items-center text-center">
+      <h3 class="text-xl font-bold text-ieee-blue dark:text-ieee-orange">
+        AI/ML based weather forecasting for Renewable Energy Systems
+      </h3>
+      <p class="mt-2 text-slate-600 dark:text-white/80">Webminar</p>
+      
+      <div class="mt-4 flex flex-col items-center gap-3">
+        <a href="https://forms.gle/FKYvJPPfrbvLzr4g6" 
+           class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange 
+                  font-semibold text-white shadow-glow transition-colors 
+                  flex items-center justify-center">
+          <i class='bx bx-user-pin mr-2'></i> Register Here
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-    <!-- Register Section -->
-    <section id="register" class="glass rounded-xl p-6 lg:p-8 shadow-glow text-center">
-      <h2 class="text-3xl font-extrabold">Ready to Participate?</h2>
-      <p class="mt-2 text-slate-600 dark:text-white/80">Choose your event and register now!</p>
-      
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <div class="bg-white/10 dark:bg-slate-800/50 p-6 rounded-xl">
-          <h3 class="text-xl font-bold text-ieee-blue dark:text-ieee-orange">Tech Forge</h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Project Presentation Competition</p>
-          <div class="mt-4 flex flex-col gap-3">
-            <a href="https://forms.gle/SrBNWTT1LNPMUnX5A" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
-              Internal Registration
-            </a>
-            <a href="https://forms.gle/qtqWW8CBLbhbz8Sw8" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors">
-              External Registration
-            </a>
-          </div>
-        </div>
-        
-        <div class="bg-white/10 dark:bg-slate-800/50 p-6 rounded-xl">
-          <h3 class="text-xl font-bold text-ieee-blue dark:text-ieee-orange">GEF Simulation</h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Global Energy Forum Exchange</p>
-          <div class="mt-4 flex flex-col gap-3">
-            <a href="https://forms.gle/qShwXEDtdzPKmpDC9" class="px-4 py-2 rounded-xl bg-ieee-blue hover:bg-ieee-orange font-semibold text-white shadow-glow transition-colors">
-              Internal Registration
-            </a>
-            <a href="https://forms.gle/LeFsncmMPLNJRvoY6" class="px-4 py-2 rounded-xl bg-ieee-orange hover:bg-ieee-blue font-semibold text-white shadow-glow transition-colors">
-              External Registration
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- FAQs -->
+<section id="faqs" class="glass rounded-xl p-6 lg:p-8 shadow-glow">
+  <h2 class="text-3xl font-extrabold">Frequently Asked Questions</h2>
+  <div class="mt-6 grid md:grid-cols-2 gap-6">
+    
+    <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+      <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+        <i class='bx bx-question-mark mr-2'></i> How do I register for the webinar?
+      </h3>
+      <p class="mt-2 text-slate-600 dark:text-white/80">
+        You can register by clicking the <strong>“Register Here”</strong> button on the event section, which redirects you to the Google Form.
+      </p>
+    </div>
 
-    <!-- FAQs -->
-    <section id="faqs" class="glass rounded-xl p-6 lg:p-8 shadow-glow">
-      <h2 class="text-3xl font-extrabold">Frequently Asked Questions</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
-          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
-            <i class='bx bx-question-mark mr-2'></i> Are there separate forms for Internal and External?
-          </h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Yes. Use the appropriate registration buttons for internal or external participants for each event.</p>
-        </div>
-        
-        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
-          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
-            <i class='bx bx-question-mark mr-2'></i> What is the dress code?
-          </h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Smart casuals or formal college attire is recommended for all events.</p>
-        </div>
-        
-        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
-          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
-            <i class='bx bx-question-mark mr-2'></i> Do I need an IEEE membership?
-          </h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">Events are open to all students. External IEEE members get discounted registration fees for Tech Forge.</p>
-        </div>
-        
-        <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
-          <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
-            <i class='bx bx-question-mark mr-2'></i> Who should I contact for support?
-          </h3>
-          <p class="mt-2 text-slate-600 dark:text-white/80">
-            <strong>Dr. J. Jency Joseph</strong> - IEEE SB Counselor: +91 9486544364<br>
-            <strong>Dr. Naveenbalaji Gowthaman</strong> - IEEE Day Ambassador: +91 9443874511<br>
-            <strong>Hariprasad S J</strong> - Chairman: +91 9688572629<br>
-            <strong>Suriya Prakash B</strong> - Vice Chairman: +91 7598017882
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+      <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+        <i class='bx bx-question-mark mr-2'></i> Who can attend this webinar?
+      </h3>
+      <p class="mt-2 text-slate-600 dark:text-white/80">
+        The webinar is open to both internal and external participants, including students, researchers, and professionals interested in AI/ML and renewable energy systems.
+      </p>
+    </div>
+
+    <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+      <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+        <i class='bx bx-question-mark mr-2'></i> Will I get a participation certificate?
+      </h3>
+      <p class="mt-2 text-slate-600 dark:text-white/80">
+        Yes, all registered participants who attend the webinar will receive an e-certificate of participation.
+      </p>
+    </div>
+
+    <div class="bg-white/5 dark:bg-slate-800/30 p-4 rounded-lg">
+      <h3 class="font-bold text-ieee-blue dark:text-ieee-orange flex items-center">
+        <i class='bx bx-question-mark mr-2'></i> Who should I contact for queries?
+      </h3>
+      <p class="mt-2 text-slate-600 dark:text-white/80">
+        <strong>Dr. J. Jency Joseph</strong> - IEEE SB Counselor: +91 9486544364<br>
+        <strong>Dr. Naveenbalaji Gowthaman</strong> - IEEE Day Ambassador: +91 9443874511<br>
+        <strong>Hariprasad S J</strong> - Chairman: +91 9688572629<br>
+        <strong>Suriya Prakash B</strong> - Vice Chairman: +91 7598017882
+      </p>
+    </div>
+
+  </div>
+</section>
   </main>
 
   <!-- Footer -->
@@ -473,15 +451,27 @@
           </p>
         </div>
         
-        <div>
-          <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">Quick Links</h3>
-          <ul class="mt-2 space-y-2">
-            <li><a href="#techforge" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">Tech Forge</a></li>
-            <li><a href="#gef" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">GEF Simulation</a></li>
-            <li><a href="#faqs" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">FAQs</a></li>
-            <li><a href="https://skct.edu.in" target="_blank" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">SKCT Website</a></li>
-          </ul>
-        </div>
+       <div>
+  <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">Quick Links</h3>
+  <ul class="mt-2 space-y-2">
+    <li>
+      <a href="#register" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">
+        Webinar Registration
+      </a>
+    </li>
+    <li>
+      <a href="#faqs" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">
+        FAQs
+      </a>
+    </li>
+    <li>
+      <a href="https://skct.edu.in" target="_blank" class="text-slate-600 dark:text-white/70 hover:text-ieee-blue dark:hover:text-ieee-orange">
+        SKCT Website
+      </a>
+    </li>
+  </ul>
+</div>
+
         
         <div>
           <h3 class="text-lg font-semibold text-ieee-blue dark:text-ieee-orange">Contact Info</h3>
@@ -538,224 +528,73 @@
         (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
-
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Countdown timer
-    function updateCountdown() {
-      const eventDate = new Date('September 13, 2025 00:00:00').getTime();
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    }
-    
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // Particle Animation
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    
+
     let particles = [];
     const particleCount = 80;
-    
-    // Theme-aware particle colors and styles
+
     const lightThemeParticles = [
-      { color: '#00629B', size: 6, shape: 'triangle' },  // IEEE blue triangle
-      { color: '#FF8300', size: 8, shape: 'chevron' },   // IEEE orange chevron
-      { color: '#FFD100', size: 7, shape: 'angle' },     // IEEE yellow angle
-      { color: '#00629B', size: 5, shape: 'line' },      // IEEE blue plus
-      { color: '#FF8300', size: 4, shape: 'diamond' }    // IEEE orange diamond
+      { color: '#00629B', shape: 'triangle' },
+      { color: '#FF8300', shape: 'chevron' },
+      { color: '#FFD100', shape: 'angle' },
+      { color: '#00629B', shape: 'line' },
+      { color: '#FF8300', shape: 'diamond' }
     ];
-    
+
     const darkThemeParticles = [
-      { color: '#4F9ED4', size: 6, shape: 'triangle' },  // Lighter blue
-      { color: '#FFA347', size: 8, shape: 'chevron' },   // Lighter orange
-      { color: '#FFDD47', size: 7, shape: 'angle' },     // Lighter yellow
-      { color: '#4F9ED4', size: 5, shape: 'line' },      // Lighter blue
-      { color: '#FFA347', size: 4, shape: 'diamond' }    // Lighter orange
+      { color: '#4F9ED4', shape: 'triangle' },
+      { color: '#FFA347', shape: 'chevron' },
+      { color: '#FFDD47', shape: 'angle' },
+      { color: '#4F9ED4', shape: 'line' },
+      { color: '#FFA347', shape: 'diamond' }
     ];
-    
+
     class Particle {
-      constructor() {
-        this.reset();
-        this.updateTheme();
-      }
-      
-      updateTheme() {
-        const isDark = document.documentElement.classList.contains('dark');
-        this.theme = isDark 
-          ? darkThemeParticles[Math.floor(Math.random() * darkThemeParticles.length)]
-          : lightThemeParticles[Math.floor(Math.random() * lightThemeParticles.length)];
-      }
-      
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 5 + 2;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
-        this.opacity = Math.random() * 0.6 + 0.4;
-        this.angle = 0;
-        this.spin = Math.random() * 0.2 - 0.1;
-      }
-      
-      update() {
-        this.angle += this.spin;
-        this.x += this.speedX;
-        this.y += this.speedY;
-        
-        if (this.x < 0 || this.x > canvas.width || 
-            this.y < 0 || this.y > canvas.height) {
-          this.reset();
-          // Make sure particles reset off-screen
-          if (Math.random() > 0.5) {
-            this.x = Math.random() > 0.5 ? 0 : canvas.width;
-            this.y = Math.random() * canvas.height;
-          } else {
-            this.y = Math.random() > 0.5 ? 0 : canvas.height;
-            this.x = Math.random() * canvas.width;
-          }
-        }
-      }
-      
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.angle);
-        ctx.globalAlpha = this.opacity;
-        
-        switch(this.theme.shape) {
-          case 'triangle':
-            this.drawTriangle();
-            break;
-          case 'chevron':
-            this.drawChevron();
-            break;
-          case 'angle':
-            this.drawAngle();
-            break;
-          case 'line':
-            this.drawLine();
-            break;
-          case 'diamond':
-            this.drawDiamond();
-            break;
-        }
-        
-        ctx.restore();
-      }
-      
-      drawTriangle() {
-        ctx.fillStyle = this.theme.color;
-        ctx.beginPath();
-        ctx.moveTo(0, -this.theme.size);
-        ctx.lineTo(-this.theme.size/2, this.theme.size/2);
-        ctx.lineTo(this.theme.size/2, this.theme.size/2);
-        ctx.closePath();
-        ctx.fill();
-      }
-      
-      drawChevron() {
-        ctx.strokeStyle = this.theme.color;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(-this.theme.size, -this.theme.size/2);
-        ctx.lineTo(0, 0);
-        ctx.lineTo(-this.theme.size, this.theme.size/2);
-        ctx.moveTo(0, -this.theme.size/2);
-        ctx.lineTo(this.theme.size, 0);
-        ctx.lineTo(0, this.theme.size/2);
-        ctx.stroke();
-      }
-      
-      drawAngle() {
-        ctx.strokeStyle = this.theme.color;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(-this.theme.size, -this.theme.size);
-        ctx.lineTo(0, 0);
-        ctx.lineTo(-this.theme.size, this.theme.size);
-        ctx.stroke();
-      }
-      
-      drawLine() {
-        ctx.strokeStyle = this.theme.color;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(-this.theme.size, 0);
-        ctx.lineTo(this.theme.size, 0);
-        ctx.stroke();
-        
-        ctx.beginPath();
-        ctx.moveTo(0, -this.theme.size);
-        ctx.lineTo(0, this.theme.size);
-        ctx.stroke();
-      }
-      
-      drawDiamond() {
-        ctx.fillStyle = this.theme.color;
-        ctx.beginPath();
-        ctx.moveTo(0, -this.theme.size);
-        ctx.lineTo(this.theme.size, 0);
-        ctx.lineTo(0, this.theme.size);
-        ctx.lineTo(-this.theme.size, 0);
-        ctx.closePath();
-        ctx.fill();
-      }
+      constructor() { this.reset(); this.updateTheme(); }
+      updateTheme() { const isDark = document.documentElement.classList.contains('dark'); this.theme = isDark ? darkThemeParticles[Math.floor(Math.random()*darkThemeParticles.length)] : lightThemeParticles[Math.floor(Math.random()*lightThemeParticles.length)]; }
+      reset() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size = Math.random()*5+2; this.speedX = Math.random()*3-1.5; this.speedY = Math.random()*3-1.5; this.opacity = Math.random()*0.6+0.4; this.angle = 0; this.spin = Math.random()*0.2-0.1; }
+      update() { this.angle+=this.spin; this.x+=this.speedX; this.y+=this.speedY; if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height){this.reset();} }
+      draw() { ctx.save(); ctx.translate(this.x,this.y); ctx.rotate(this.angle); ctx.globalAlpha=this.opacity; switch(this.theme.shape){ case'triangle':ctx.fillStyle=this.theme.color;ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(-3,3);ctx.lineTo(3,3);ctx.closePath();ctx.fill();break; case'chevron':ctx.strokeStyle=this.theme.color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-5,-2.5);ctx.lineTo(0,0);ctx.lineTo(-5,2.5);ctx.moveTo(0,-2.5);ctx.lineTo(5,0);ctx.lineTo(0,2.5);ctx.stroke();break; case'angle':ctx.strokeStyle=this.theme.color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-5,-5);ctx.lineTo(0,0);ctx.lineTo(-5,5);ctx.stroke();break; case'line':ctx.strokeStyle=this.theme.color;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(0,5);ctx.stroke();break; case'diamond':ctx.fillStyle=this.theme.color;ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(5,0);ctx.lineTo(0,5);ctx.lineTo(-5,0);ctx.closePath();ctx.fill();break; } ctx.restore(); }
     }
-    
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    }
-    
-    function updateParticleTheme() {
-      particles.forEach(particle => particle.updateTheme());
-    }
-    
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Add subtle gradient background for better particle visibility
-      const isDark = document.documentElement.classList.contains('dark');
-      const bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      bgGradient.addColorStop(0, isDark ? 'rgba(15,23,42,0.1)' : 'rgba(255,255,255,0.1)');
-      bgGradient.addColorStop(1, isDark ? 'rgba(15,23,42,0.3)' : 'rgba(255,255,255,0.3)');
-      ctx.fillStyle = bgGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-      }
-      
-      requestAnimationFrame(animateParticles);
-    }
-    
-    window.addEventListener('resize', function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-    
-    initParticles();
-    animateParticles();
+
+    function initParticles(){ particles=[]; for(let i=0;i<particleCount;i++){particles.push(new Particle());} }
+    function updateParticleTheme(){ particles.forEach(p=>p.updateTheme()); }
+    function animateParticles(){ ctx.clearRect(0,0,canvas.width,canvas.height); for(let i=0;i<particles.length;i++){particles[i].update();particles[i].draw();} requestAnimationFrame(animateParticles); }
+
+    window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+    initParticles(); animateParticles();
   </script>
+<!-- SwiperJS for the previous event  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var techSwiper = new Swiper(".techSwiper", {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".techSwiper .swiper-pagination",
+      clickable: true,
+    },
+  });
+
+  var gefSwiper = new Swiper(".gefSwiper", {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".gefSwiper .swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
 </body>
 </html>
-
-
